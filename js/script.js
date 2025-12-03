@@ -1,4 +1,82 @@
 document.addEventListener('DOMContentLoaded', () => {
+  
+  // 1. DYNAMIC PARTICLES FUNCTION
+  // We wrap this in a function so we can reload it when the theme changes
+  function loadParticles(isDark) {
+    if (typeof particlesJS !== 'undefined') {
+        const particleColor = isDark ? "#FFD700" : "#007BFF"; // Gold for Dark, Blue for Light
+        
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, 
+                "color": { "value": particleColor }, 
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { 
+                    "enable": true, 
+                    "distance": 150, 
+                    "color": particleColor, // Line color matches particle color
+                    "opacity": 0.2, 
+                    "width": 1 
+                },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+    }
+  }
+
+  // 2. VANILLA TILT INITIALIZATION
+  if (typeof VanillaTilt !== 'undefined') {
+      VanillaTilt.init(document.querySelectorAll(".project-focus-card, .certificate-tile"), {
+          max: 10,       
+          speed: 400,    
+          glare: true,   
+          "max-glare": 0.3, 
+          scale: 1.02    
+      });
+  }
+
+  // 3. DARK MODE TOGGLE & PARTICLE RELOAD
+  const toggleBtn = document.getElementById('theme-toggle');
+  
+  // Helper function to apply theme AND reload particles
+  function setDarkTheme(isDark) {
+    if (isDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        if(toggleBtn) toggleBtn.style.color = '#FFD700'; // Set icon to Gold
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        if(toggleBtn) toggleBtn.style.color = ''; // Reset to default
+    }
+    // Reload particles with the new color preference
+    loadParticles(isDark);
+  }
+
+  // Check saved theme on load
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+      setDarkTheme(true);
+  } else {
+      // If no saved theme (or light), load default blue particles
+      loadParticles(false);
+  }
+
+  if(toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+          const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          setDarkTheme(!isDark);
+      });
+  }
+
   // ===== Navbar Scroll Behavior =====
   const navbar = document.querySelector('.navbar');
   let lastScrollTop = 0;
@@ -21,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, false);
   }
 
-  // ===== Typewriter Effect for Hero Name =====
+  // ===== Typewriter Effect =====
   const nameTypewriterElement = document.querySelector('h1.hero-name .typewriter-text');
   const nameToType = "Aditya Nitin Bhavsar";
   let nameCharIndex = 0;
@@ -46,15 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
     nameTypewriterElement.textContent = ''; 
     setTimeout(typeNameEffect, 500); 
   } else { 
-    const staticNameElement = document.querySelector('h1.hero-name');
-    if(staticNameElement && !nameTypewriterElement) { 
+     const staticNameElement = document.querySelector('h1.hero-name');
+     if(staticNameElement && !nameTypewriterElement) { 
         staticNameElement.textContent = nameToType;
-    }
+     }
      if (animatedRolesElement) setTimeout(animateRoles, 500);
   }
 
-
-  // ===== Animated Roles in Hero Section =====
+  // ===== Animated Roles =====
   const rolesToAnimate = ["A Data Scientist", "An AI Developer", "An ML Engineer", "A Data Analyst", "A Python Programmer", "A Cloud Enthusiast"];
   const animatedRolesElement = document.getElementById('animated-roles');
   let roleIndex = 0;
@@ -68,10 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function animateRoles() {
     if (!animatedRolesElement) return;
     const currentRoleText = rolesToAnimate[roleIndex];
-    const rolesContainer = animatedRolesElement.parentElement;
-    
-    if (rolesContainer) rolesContainer.classList.add('role-cursor-active');
-
     if (isDeletingRoles) {
       animatedRolesElement.textContent = currentRoleText.substring(0, currentRoleCharIndex - 1);
       currentRoleCharIndex--;
@@ -88,99 +161,39 @@ document.addEventListener('DOMContentLoaded', () => {
       if (currentRoleCharIndex === currentRoleText.length) {
         isDeletingRoles = true;
         setTimeout(() => { 
-            if (isDeletingRoles && rolesContainer) {
-                 setTimeout(animateRoles, pauseBetweenAnimatedRoles);
-            }
+             setTimeout(animateRoles, pauseBetweenAnimatedRoles);
         }, 500); 
       } else {
         setTimeout(animateRoles, roleTypingSpeed);
       }
     }
   }
-  // Roles animation is triggered after name typewriter finishes.
 
-  // ===== Intersection Observer for Animations =====
-  const observerCallback = (entries, observerInstance) => {
+  // ===== Intersection Observer =====
+  const observerCallback = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // For main section reveal (sliding panel)
         if (entry.target.classList.contains('reveal-on-scroll')) {
           entry.target.classList.add('show'); 
-          
-          // Find and apply delays to children with .animate-on-reveal within this shown section
           const innerAnimatedElements = entry.target.querySelectorAll('.section-content-wrapper .animate-on-reveal');
           innerAnimatedElements.forEach(el => {
-            let delay = el.dataset.animationDelay || '0s'; // For elements with a fixed delay
-
-            // For items that need progressive staggering based on an index/factor
+            let delay = el.dataset.animationDelay || '0s'; 
             if (el.classList.contains('stagger-item') && el.dataset.staggerDelayFactor) {
-                const baseDelayForSection = parseFloat(entry.target.querySelector('.section-title-container.animate-on-reveal')?.dataset.animationDelay || '0') * 1000;
+                const baseDelayForSection = 0;
                 const factor = parseInt(el.dataset.staggerDelayFactor) || 0;
-                // Base delay for first stagger item is 0.1s after title, then increment
-                delay = `${(baseDelayForSection / 1000) + (0.15 * factor)}s`; 
-            } else if (el.classList.contains('stagger-item') && el.dataset.staggerIndex) { // For skill cards
-                delay = `${parseInt(el.dataset.staggerIndex) * 150}ms`;
+                delay = `${(baseDelayForSection) + (0.1 * factor)}s`; 
             }
-
             el.style.transitionDelay = delay;
-            // Adding 'show' to these individual items can be done if CSS depends on it,
-            // but current CSS for .animate-on-reveal uses parent .show
-            // el.classList.add('show'); // Uncomment if individual control is needed beyond CSS cascade
           });
         } 
-        // For individually observed skill cards (already handled by CSS + their own .show)
-        else if (entry.target.classList.contains('hidden-stagger')) {
-          const staggerIndex = entry.target.dataset.staggerIndex;
-          if (staggerIndex !== undefined) {
-            const delay = parseInt(staggerIndex) * 150; 
-            entry.target.style.transitionDelay = `${delay}ms`;
-          }
-          entry.target.classList.add('show');
-        }
-        // observerInstance.unobserve(entry.target); // Optional: animate only once
-      } else {
-        // Optional: Reset for re-animation on scroll up
-        // if (entry.target.classList.contains('show')) {
-        //   entry.target.classList.remove('show');
-        //   entry.target.style.transitionDelay = '0s'; // Reset any applied delays
-        // }
       }
     });
   };
 
-  const animationObserver = new IntersectionObserver(observerCallback, {
-    rootMargin: '0px',
-    threshold: 0.2 
-  });
+  const animationObserver = new IntersectionObserver(observerCallback, { rootMargin: '0px', threshold: 0.15 });
+  document.querySelectorAll('section.reveal-on-scroll').forEach(el => animationObserver.observe(el));
 
-  const revealSections = document.querySelectorAll('section.reveal-on-scroll');
-  revealSections.forEach((el) => {
-    animationObserver.observe(el);
-  });
-
-  const staggeredSkillCards = document.querySelectorAll('.skill-card.hidden-stagger');
-  staggeredSkillCards.forEach((el) => animationObserver.observe(el));
-
-  // ===== Smooth scroll for anchor links =====
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      const mainNavbar = document.querySelector('.navbar');
-      
-      if (targetElement && mainNavbar) {
-        const navbarHeight = mainNavbar.offsetHeight || 70; 
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-      } else if (targetElement) { 
-          targetElement.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
-
-  // ===== Project Modal Functionality =====
+  // ===== Modal Functionality =====
   const modalOverlay = document.getElementById('modalOverlay');
   const projectCards = document.querySelectorAll('.project-focus-card[data-modal-target]'); 
   const closeButtons = document.querySelectorAll('.modal-close-btn');
@@ -189,10 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openModal(modalId) {
     const modalToOpen = document.getElementById(modalId);
-    if (!modalToOpen || !modalOverlay) {
-      console.error("Modal or Modal Overlay not found for ID:", modalId);
-      return;
-    }
+    if (!modalToOpen || !modalOverlay) return;
     previouslyFocusedElement = document.activeElement; 
     if (currentlyOpenModal && currentlyOpenModal !== modalToOpen) { 
         currentlyOpenModal.classList.remove('active');
@@ -204,10 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
     modalToOpen.setAttribute('aria-hidden', 'false');
     modalOverlay.setAttribute('aria-hidden', 'false');
     currentlyOpenModal = modalToOpen; 
-    const focusableElements = modalToOpen.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    if (focusableElements.length > 0) {
-        focusableElements[0].focus();
-    }
   }
 
   function closeModal() {
@@ -217,97 +223,44 @@ document.addEventListener('DOMContentLoaded', () => {
       currentlyOpenModal.setAttribute('aria-hidden', 'true');
       modalOverlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
-      if (previouslyFocusedElement) {
-        previouslyFocusedElement.focus(); 
-      }
+      if (previouslyFocusedElement) previouslyFocusedElement.focus(); 
       currentlyOpenModal = null; 
     }
   }
 
   projectCards.forEach(card => {
     card.addEventListener('click', (event) => {
-      if (event.target.closest('.project-external-link')) { 
-        return; 
-      }
+      if (event.target.closest('.project-external-link')) return;
       const modalId = card.dataset.modalTarget.substring(1);
       openModal(modalId);
     });
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
-        if (document.activeElement.closest('.project-external-link')) {
-            return;
-        }
-        e.preventDefault(); 
-        const modalId = card.dataset.modalTarget.substring(1);
-        openModal(modalId);
+         e.preventDefault();
+         if (e.target.closest('.project-external-link')) return;
+         const modalId = card.dataset.modalTarget.substring(1);
+         openModal(modalId);
       }
     });
   });
 
-  closeButtons.forEach(button => {
-    button.addEventListener('click', closeModal);
-  });
+  closeButtons.forEach(button => button.addEventListener('click', closeModal));
+  if (modalOverlay) modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-  if (modalOverlay) {
-    modalOverlay.addEventListener('click', (event) => {
-      if (event.target === modalOverlay) { 
-        closeModal();
-      }
-    });
-  }
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
-      closeModal();
-    }
-  });
-
-
-  // ===== Update Copyright Year =====
-  const currentYearSpan = document.getElementById('currentYear');
-  if (currentYearSpan) {
-    currentYearSpan.textContent = new Date().getFullYear();
-  }
-
-  // ===== Active Nav Link Highlighting on Scroll =====
-  const navSections = document.querySelectorAll('section[id], header[id]');
-  const navLiAnchors = document.querySelectorAll('.nav-links li a');
-  const mainNavbarForActiveLink = document.querySelector('.navbar');
-
-  if (navSections.length > 0 && navLiAnchors.length > 0 && mainNavbarForActiveLink) {
-    const updateActiveLink = () => {
-      let currentSectionId = navSections[0].id; 
-      const navbarHeight = mainNavbarForActiveLink.offsetHeight || 70; 
-      navSections.forEach(section => {
-        const sectionTop = section.offsetTop - navbarHeight - window.innerHeight * 0.3; 
-        if (window.pageYOffset >= sectionTop) {
-          currentSectionId = section.getAttribute('id');
-        }
-      });
-      navLiAnchors.forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href').substring(1) === currentSectionId) {
-          a.classList.add('active');
-        }
-      });
-    };
-    window.addEventListener('scroll', updateActiveLink);
-    updateActiveLink(); 
-  }
-
-  // Mobile Menu Toggle
+  // Mobile Menu
   const mobileMenuButton = document.getElementById('mobileMenuToggle');
   const mainNavLinks = document.querySelector('nav .nav-links');
-
   if (mobileMenuButton && mainNavLinks) {
     mobileMenuButton.addEventListener('click', () => {
-      const isExpanded = mainNavLinks.classList.toggle('active'); 
+      mainNavLinks.classList.toggle('active'); 
+      const isExpanded = mainNavLinks.classList.contains('active');
       mobileMenuButton.setAttribute('aria-expanded', isExpanded);
-      if (isExpanded) {
-        mobileMenuButton.innerHTML = '<span class="icon-close"></span>';
-      } else {
-        mobileMenuButton.innerHTML = '<span class="icon-menu"></span>';
-      }
+      mobileMenuButton.innerHTML = isExpanded ? '<span class="icon-close"></span>' : '<span class="icon-menu"></span>';
     });
   }
+  
+  // Update Year
+  const currentYearSpan = document.getElementById('currentYear');
+  if (currentYearSpan) currentYearSpan.textContent = new Date().getFullYear();
 });
