@@ -10,29 +10,44 @@
   <meta name="keywords" content="Data Scientist, Aditya Nitin Bhavsar, Portfolio, Machine Learning, Python, AI, Developer, Creative Portfolio">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="YOUR_WEBSITE_URL_HERE"> <meta property="og:title" content="Aditya Nitin Bhavsar | Creative Portfolio">
+  <meta property="og:url" content="YOUR_WEBSITE_URL_HERE"> 
+  <meta property="og:title" content="Aditya Nitin Bhavsar | Creative Portfolio">
   <meta property="og:description" content="Creative portfolio of Aditya Nitin Bhavsar, specializing in data-driven solutions and AI.">
-  <meta property="og:image" content="YOUR_PREVIEW_IMAGE_URL_HERE"> <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="YOUR_WEBSITE_URL_HERE"> <meta property="twitter:title" content="Aditya Nitin Bhavsar | Creative Portfolio">
+  <meta property="og:image" content="YOUR_PREVIEW_IMAGE_URL_HERE"> 
+  
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="YOUR_WEBSITE_URL_HERE"> 
+  <meta property="twitter:title" content="Aditya Nitin Bhavsar | Creative Portfolio">
   <meta property="twitter:description" content="Creative portfolio of Aditya Nitin Bhavsar, specializing in data-driven solutions and AI.">
-  <meta property="twitter:image" content="YOUR_PREVIEW_IMAGE_URL_HERE"> <link rel="icon" href="favicon.ico" type="image/x-icon"> <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta property="twitter:image" content="YOUR_PREVIEW_IMAGE_URL_HERE"> 
+  
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css">
 </head>
 <body>
+  
+  <div id="particles-js"></div>
+
   <nav class="navbar">
     <div class="navbar-container">
         <div class="logo">Aditya B.</div>
         <ul class="nav-links">
-        <li><a href="#home" class="active" aria-label="Navigate to Home section">Home</a></li>
-        <li><a href="#about" aria-label="Navigate to About Me section">About</a></li>
-        <li><a href="#projects" aria-label="Navigate to Projects section">Projects</a></li>
-        <li><a href="#skills" aria-label="Navigate to Skills section">Skills</a></li>
-        <li><a href="#certifications" aria-label="Navigate to Certifications section">Certifications</a></li>
-        <li><a href="#contact" aria-label="Navigate to Contact section">Contact</a></li>
+            <li><a href="#home" class="active" aria-label="Navigate to Home section">Home</a></li>
+            <li><a href="#about" aria-label="Navigate to About Me section">About</a></li>
+            <li><a href="#projects" aria-label="Navigate to Projects section">Projects</a></li>
+            <li><a href="#skills" aria-label="Navigate to Skills section">Skills</a></li>
+            <li><a href="#certifications" aria-label="Navigate to Certifications section">Certifications</a></li>
+            <li><a href="#contact" aria-label="Navigate to Contact section">Contact</a></li>
         </ul>
+        
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+            <i class="icon-bulb"></i>
+        </button>
+
         <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation" aria-expanded="false">
             <span class="icon-menu"></span>
         </button>
@@ -85,7 +100,22 @@
             <h2 class="section-title">Featured Projects</h2>
             </div>
             <div class="projects-focus-grid">
-            <div class="project-focus-card animate-on-reveal stagger-item" data-stagger-delay-factor="1" data-modal-target="#projectModalCredibilityAI" role="button" tabindex="0" aria-label="View details for Credibility Score AI project">
+
+            <div class="project-focus-card animate-on-reveal stagger-item" data-stagger-delay-factor="1" data-modal-target="#projectModalGemAI" role="button" tabindex="0" aria-label="View details for GemAI E-Commerce project">
+                <div class="project-card-image-placeholder">
+                    <i class="icon-basket placeholder-icon"></i>
+                    <span class="placeholder-text">GemAI</span>
+                </div>
+                <div class="project-focus-content">
+                <h3>GemAI E-Commerce</h3>
+                <p class="project-description">An intelligent BI dashboard using Gemini Pro for Text-to-SQL e-commerce analytics.</p>
+                </div>
+                <div class="project-card-footer">
+                    <span class="details-prompt">Read More &rarr;</span>
+                </div>
+            </div>
+
+            <div class="project-focus-card animate-on-reveal stagger-item" data-stagger-delay-factor="2" data-modal-target="#projectModalCredibilityAI" role="button" tabindex="0" aria-label="View details for Credibility Score AI project">
                 <div class="project-card-image-placeholder">
                     <i class="icon-shield placeholder-icon"></i>
                     <span class="placeholder-text">CS-AI</span>
@@ -99,7 +129,7 @@
                 </div>
             </div>
 
-            <div class="project-focus-card animate-on-reveal stagger-item" data-stagger-delay-factor="2" data-modal-target="#projectModalDataScienceAgent" role="button" tabindex="0" aria-label="View details for DataScience-Agent project">
+            <div class="project-focus-card animate-on-reveal stagger-item" data-stagger-delay-factor="3" data-modal-target="#projectModalDataScienceAgent" role="button" tabindex="0" aria-label="View details for DataScience-Agent project">
                 <div class="project-card-image-placeholder">
                     <i class="icon-chemistry placeholder-icon"></i>
                     <span class="placeholder-text">DS-Agent</span>
@@ -113,7 +143,7 @@
                 </div>
             </div>
 
-            <div class="project-focus-card animate-on-reveal stagger-item" data-stagger-delay-factor="3" data-modal-target="#projectModalTinyTroupe" role="button" tabindex="0" aria-label="View details for Tiny_Troupe project">
+            <div class="project-focus-card animate-on-reveal stagger-item" data-stagger-delay-factor="4" data-modal-target="#projectModalTinyTroupe" role="button" tabindex="0" aria-label="View details for Tiny_Troupe project">
                 <div class="project-card-image-placeholder">
                     <i class="icon-people placeholder-icon"></i>
                     <span class="placeholder-text">Agents</span>
@@ -127,7 +157,7 @@
                 </div>
             </div>
 
-            <div class="project-focus-card animate-on-reveal stagger-item" data-stagger-delay-factor="4" data-modal-target="#projectModalPythonProjects" role="button" tabindex="0" aria-label="View details for Python Projects Collection">
+            <div class="project-focus-card animate-on-reveal stagger-item" data-stagger-delay-factor="5" data-modal-target="#projectModalPythonProjects" role="button" tabindex="0" aria-label="View details for Python Projects Collection">
                 <div class="project-card-image-placeholder">
                     <i class="icon-layers placeholder-icon"></i>
                     <span class="placeholder-text">PyCode</span>
@@ -151,13 +181,21 @@
             <div class="section-title-container animate-on-reveal" data-animation-delay="0s">
             <h2 class="section-title">My Skills</h2>
             </div>
-            <div class="skills-list-container animate-on-reveal" data-animation-delay="0.15s">
-                <ul class="skills-list">
-                    <li>Python</li><li>SQL</li><li>R</li><li>Data Analysis</li><li>Machine Learning</li>
-                    <li>Pandas</li><li>NumPy</li><li>Scikit-Learn</li><li>Streamlit</li><li>Flask</li>
-                    <li>Tableau</li><li>Power BI</li><li>AWS (Cloud Practitioner)</li><li>Git & GitHub</li>
-                    <li>HTML</li><li>CSS</li><li>JavaScript</li><li>API Development</li>
-                </ul>
+            <div class="skills-marquee-container animate-on-reveal" data-animation-delay="0.15s">
+                <div class="skills-marquee-track">
+                    <ul class="skills-list">
+                        <li>Python</li><li>SQL</li><li>R</li><li>Data Analysis</li><li>Machine Learning</li>
+                        <li>Pandas</li><li>NumPy</li><li>Scikit-Learn</li><li>Streamlit</li><li>Flask</li>
+                        <li>Tableau</li><li>Power BI</li><li>AWS (Cloud Practitioner)</li><li>Git & GitHub</li>
+                        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>API Development</li>
+                    </ul>
+                    <ul class="skills-list">
+                        <li>Python</li><li>SQL</li><li>R</li><li>Data Analysis</li><li>Machine Learning</li>
+                        <li>Pandas</li><li>NumPy</li><li>Scikit-Learn</li><li>Streamlit</li><li>Flask</li>
+                        <li>Tableau</li><li>Power BI</li><li>AWS (Cloud Practitioner)</li><li>Git & GitHub</li>
+                        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>API Development</li>
+                    </ul>
+                </div>
             </div>
         </div>
       </div>
@@ -170,17 +208,53 @@
             <h2 class="section-title">Certifications</h2>
             </div>
             <div class="certifications-grid">
+            
             <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="1">
+                <div class="tile-icon"><i class="icon-badge"></i></div>
+                <div class="tile-content">
+                <h3 class="certificate-name">OCI 2025 Certified Generative AI Professional</h3>
+                <p class="issuer">Oracle</p>
+                </div>
+                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=92B8FD1068ACEAD4C857704412CEFD6EA1AFA4109BA0DDB7A034471292E91E14" target="_blank" class="tile-link" aria-label="Validate OCI 2025 Certified Generative AI Professional">
+                View Certificate
+                </a>
+            </div>
+
+            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="2">
+                <div class="tile-icon"><i class="icon-badge"></i></div>
+                <div class="tile-content">
+                <h3 class="certificate-name">OCI 2025 Certified AI Foundations Associate</h3>
+                <p class="issuer">Oracle</p>
+                </div>
+                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=61B38649A50F2A94D750D1FA68B70D683EF9A27260F53DEB348F3A3DE36FA68A" target="_blank" class="tile-link" aria-label="Validate OCI 2025 Certified AI Foundations Associate">
+                View Certificate
+                </a>
+            </div>
+
+            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="3">
+                <div class="tile-icon"><i class="icon-badge"></i></div>
+                <div class="tile-content">
+                <h3 class="certificate-name">OCI 2025 Certified Foundations Associate</h3>
+                <p class="issuer">Oracle</p>
+                </div>
+                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=15E0B3F278FC076B9468CB328A87EC08BBE26C8EDF7A966827EDE044ED296578" target="_blank" class="tile-link" aria-label="Validate OCI 2025 Certified Foundations Associate">
+                View Certificate
+                </a>
+            </div>
+
+            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="4">
                 <div class="tile-icon"><i class="icon-badge"></i></div>
                 <div class="tile-content">
                 <h3 class="certificate-name">AWS Certified Cloud Practitioner</h3>
                 <p class="issuer">AWS Training and Certification</p>
+                <p class="issuer" style="font-size: 0.75rem; margin-top: 0.5rem; user-select: all; cursor: text;" title="Click to highlight">Validation Number: 5JRLH9ELP2E41K51</p>
                 </div>
                 <a href="https://aws.amazon.com/verification" title="Validation Number: 5JRLH9ELP2E41K51" target="_blank" class="tile-link" aria-label="Validate AWS Certified Cloud Practitioner certificate">
-                Validate
+                View Certificate
                 </a>
             </div>
-            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="2">
+
+            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="5">
                 <div class="tile-icon"><i class="icon-badge"></i></div>
                 <div class="tile-content">
                 <h3 class="certificate-name">Data Science & ML Bootcamp</h3>
@@ -190,7 +264,7 @@
                 View Certificate
                 </a>
             </div>
-            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="3">
+            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="6">
                 <div class="tile-icon"><i class="icon-badge"></i></div>
                 <div class="tile-content">
                 <h3 class="certificate-name">Big Data 101</h3>
@@ -200,24 +274,24 @@
                 View Certificate
                 </a>
             </div>
-            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="4">
+            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="7">
                 <div class="tile-icon"><i class="icon-badge"></i></div>
                 <div class="tile-content">
                 <h3 class="certificate-name">Introduction to R</h3>
                 <p class="issuer">Great Learning Academy</p>
                 </div>
                 <a href="https://verify.mygreatlearning.com/QBPCNZQH" target="_blank" class="tile-link" aria-label="Verify Introduction to R certificate">
-                Verify
+                View Certificate
                 </a>
             </div>
-            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="5">
+            <div class="certificate-tile animate-on-reveal stagger-item" data-stagger-delay-factor="8">
                 <div class="tile-icon"><i class="icon-badge"></i></div>
                 <div class="tile-content">
                 <h3 class="certificate-name">Python Foundation Nanodegree</h3>
                 <p class="issuer">Udacity</p>
                 </div>
                 <a href="https://confirm.udacity.com/XNSVCRTU" target="_blank" class="tile-link" aria-label="Confirm Python Foundation Nanodegree">
-                Confirm
+                View Certificate
                 </a>
             </div>
             </div>
@@ -232,7 +306,20 @@
                 <h2 class="section-title">Get In Touch</h2>
             </div>
             <p class="contact-intro animate-on-reveal" data-animation-delay="0.15s">I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
-            <a href="mailto:ab09741n@pace.edu" class="btn btn-primary contact-email-btn animate-on-reveal" data-animation-delay="0.3s">Say Hello</a> 
+            
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="contact-form animate-on-reveal" data-animation-delay="0.3s">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Your Message" required class="form-input textarea"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary contact-submit-btn">Send Message</button>
+            </form>
+
             </div>
       </div>
     </section>
@@ -245,6 +332,37 @@
   </footer>
 
   <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    
+    <div id="projectModalGemAI" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitleGemAI">
+        <div class="modal-content">
+            <button class="modal-close-btn" aria-label="Close project details modal">&times;</button>
+            <h2 id="modalTitleGemAI" class="modal-title">GemAI E-Commerce</h2>
+            <div class="modal-project-image-placeholder">
+                <i class="icon-basket placeholder-icon-modal"></i>
+                <span class="placeholder-text-modal">Dashboard Interface</span>
+            </div>
+            <div class="modal-project-body">
+                <p><strong>The Challenge:</strong> E-commerce businesses generate vast amounts of data, but extracting actionable insights often requires technical SQL knowledge, creating a bottleneck for non-technical stakeholders.</p>
+                <p><strong>My Solution:</strong> I developed GemAI E-Commerce, a conversational Business Intelligence tool that acts as a virtual data analyst. It leverages Google's Gemini Pro to translate natural language questions into secure SQL queries, fetching real-time data from a Supabase backend.</p>
+                <p><strong>Key Features & My Role:</strong></p>
+                <ul>
+                    <li><strong>Text-to-SQL Engine:</strong> Integrated Gemini Pro to interpret complex queries (e.g., "What is our top-selling category?") and generate accurate SQL.</li>
+                    <li><strong>Real-time Analytics:</strong> Built an interactive dashboard using Streamlit to visualize revenue, inventory, and sales trends instantly.</li>
+                    <li><strong>Database Integration:</strong> Connected a live Supabase (PostgreSQL) database for secure and scalable data retrieval.</li>
+                </ul>
+                <p><strong>Technologies Used:</strong> Python, Streamlit, Google Gemini Pro, Supabase (PostgreSQL), Pandas, Altair.</p>
+            </div>
+            <div class="modal-actions">
+                <a href="https://github.com/aditya19111/GemAI-Ecommerce" target="_blank" class="btn modal-link-btn" aria-label="View GemAI E-Commerce on GitHub">
+                    <i class="icon-social-github"></i> View on GitHub
+                </a>
+                <a href="https://gemai-ecommerce-isd2arhprgthklookz7lp6.streamlit.app/" target="_blank" class="btn modal-link-btn" aria-label="View Live Demo">
+                    <i class="icon-screen-desktop"></i> Live Demo
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div id="projectModalCredibilityAI" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitleCredibilityAI">
         <div class="modal-content">
             <button class="modal-close-btn" aria-label="Close project details modal">&times;</button>
@@ -346,6 +464,10 @@
         </div>
     </div>
 
-  </div> <script defer src="js/script.js"></script>
+  </div> 
+  
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <script defer src="js/script.js"></script>
 </body>
 </html>
