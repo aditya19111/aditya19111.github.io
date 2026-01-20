@@ -336,28 +336,43 @@
     <div id="projectModalGemAI" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitleGemAI">
         <div class="modal-content">
             <button class="modal-close-btn" aria-label="Close project details modal">&times;</button>
-            <h2 id="modalTitleGemAI" class="modal-title">GemAI E-Commerce</h2>
+            <h2 id="modalTitleGemAI" class="modal-title">Gem-AI Platform</h2>
             <div class="modal-project-image-placeholder">
                 <i class="icon-basket placeholder-icon-modal"></i>
                 <span class="placeholder-text-modal">Dashboard Interface</span>
             </div>
             <div class="modal-project-body">
-                <p><strong>The Challenge:</strong> E-commerce businesses generate vast amounts of data, but extracting actionable insights often requires technical SQL knowledge, creating a bottleneck for non-technical stakeholders.</p>
-                <p><strong>My Solution:</strong> I developed GemAI E-Commerce, a conversational Business Intelligence tool that acts as a virtual data analyst. It leverages Google's Gemini Pro to translate natural language questions into secure SQL queries, fetching real-time data from a Supabase backend.</p>
-                <p><strong>Key Features & My Role:</strong></p>
+                <p>
+                    A Generative AI-powered analytics platform that democratizes data access by transforming natural language questions into executable SQL queries, interactive visualizations, and customizable dashboards.
+                </p>
+                <p><strong>Project Overview:</strong> Gem-AI bridges the gap between technical databases and non-technical stakeholders. Instead of relying on static reports, users can converse with their data directly. The application leverages Large Language Models (LLMs) to understand user intent, generate complex SQL queries, and instantly render the results as dynamic charts.</p>
+                
+                <p><strong>Key Features:</strong></p>
                 <ul>
-                    <li><strong>Text-to-SQL Engine:</strong> Integrated Gemini Pro to interpret complex queries (e.g., "What is our top-selling category?") and generate accurate SQL.</li>
-                    <li><strong>Real-time Analytics:</strong> Built an interactive dashboard using Streamlit to visualize revenue, inventory, and sales trends instantly.</li>
-                    <li><strong>Database Integration:</strong> Connected a live Supabase (PostgreSQL) database for secure and scalable data retrieval.</li>
+                    <li><strong>Text-to-SQL Engine:</strong> Translates natural language prompts (e.g., "Show monthly revenue") into optimized SQL queries, handling complex joins and providing "Explainable AI" verification.</li>
+                    <li><strong>Dynamic Visualization System:</strong> Intelligent auto-detection algorithms analyze query results to select the optimal visualization (KPIs, Line, Bar, etc.) and generate interactive filters.</li>
+                    <li><strong>Custom Dashboard Builder:</strong> A persistent, drag-and-drop workspace where users can pin insights, resize widgets, rename titles, and export full reports to PDF.</li>
                 </ul>
-                <p><strong>Technologies Used:</strong> Python, Streamlit, Google Gemini Pro, Supabase (PostgreSQL), Pandas, Altair.</p>
+
+                <p><strong>Technical Highlights:</strong></p>
+                <ul>
+                    <li><strong>Frontend:</strong> Built with vanilla JavaScript for maximum performance, using Chart.js for rendering and SortableJS for complex grid interactions.</li>
+                    <li><strong>Backend:</strong> Python/Flask API handling LLM orchestration and secure database execution.</li>
+                    <li><strong>State Management:</strong> LocalStorage-based persistence ensures user dashboards are saved instantly.</li>
+                </ul>
+                
+                <p><strong>Tech Stack:</strong> Google Gemini Pro, LangChain, Python, Flask, SQL (PostgreSQL), HTML5, CSS3, JavaScript (ES6+), Chart.js, SortableJS, jsPDF.</p>
             </div>
+            
             <div class="modal-actions">
                 <a href="https://github.com/aditya19111/GemAI-Ecommerce" target="_blank" class="btn modal-link-btn" aria-label="View GemAI E-Commerce on GitHub">
-                    <i class="icon-social-github"></i> View on GitHub
+                    GitHub
                 </a>
-                <a href="https://gemai-ecommerce-isd2arhprgthklookz7lp6.streamlit.app/" target="_blank" class="btn modal-link-btn" aria-label="View Live Demo">
-                    <i class="icon-screen-desktop"></i> Live Demo
+                <a href="https://gemai-ecommerce-isd2arhprgthklookz7lp6.streamlit.app/" target="_blank" class="btn modal-link-btn" aria-label="View Streamlit Demo">
+                    Streamlit
+                </a>
+                <a href="http://gemai-staging-env.us-east-2.elasticbeanstalk.com/" target="_blank" class="btn modal-link-btn" aria-label="View AWS Demo">
+                    AWS
                 </a>
             </div>
         </div>
@@ -433,7 +448,12 @@
                 <p><strong>Technologies Used:</strong> Python, Object-Oriented Programming, AI principles (Potentially Pygame or a custom simulation library for visualization).</p>
             </div>
              <div class="modal-actions">
-                <a href="https://github.com/aditya19111/Tiny_Troupe" target="_blank" class="btn modal-link-btn" aria-label="View Tiny_Troupe project on GitHub"><i class="icon-social-github"></i> View on GitHub</a>
+                <a href="https://github.com/aditya19111/Tiny_Troupe" target="_blank" class="btn modal-link-btn" aria-label="View Tiny_Troupe project on GitHub">
+                    GitHub
+                </a>
+                <a href="https://huggingface.co/spaces/Aditya-1911/Duel_Agent_convo_Simulation" target="_blank" class="btn modal-link-btn" aria-label="View Live Demo">
+                    Live Demo
+                </a>
             </div>
         </div>
     </div>
